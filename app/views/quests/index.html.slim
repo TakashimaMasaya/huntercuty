@@ -1,0 +1,26 @@
+.container
+  .row
+    = render 'shared/sidebar'
+    .col-md-10.col-12
+      = form_with model: @quest, local: true do |f|
+        = render 'shared/error_messages', object: @quest
+        .form-group
+          = f.label :title
+          = f.text_area :title, class: 'form-control'
+        .form-group
+          = f.label :description
+          = f.text_area :description, class: 'form-control'
+        = f.submit class: 'btn btn-primary btn-raised'
+
+      - @quests.each do |quest|
+          .card.mb-5
+            .card-header
+              .d-flex.align-items-center
+                = link_to quest_path(quest) do
+                  = quest.title
+            .card-body
+              .card-text
+                - if quest.user
+                  = quest.user.username
+              .card-text
+                = quest.description

@@ -1,0 +1,33 @@
+.container
+  .row
+    = render 'shared/sidebar'
+    .col-md-10.col-12
+      .card.mb-5
+        .card-header
+          .d-flex.align-items-center
+            = @quest.title
+        .card-body
+          .card-text
+            = @quest.description
+      
+      = form_with model: [@quest, @answer], local: true do |f|
+        = render 'shared/error_messages', object: @answer
+        .form-group
+          = f.label :title
+          = f.text_area :title, class: 'form-control'
+        .form-group
+          = f.label :description
+          = f.text_area :description, class: 'form-control'
+        = f.submit class: 'btn btn-primary btn-raised'
+      
+        - @answers.each do |answer|
+          .card.mb-5
+            .card-header
+              .d-flex.align-items-center
+                = answer.title
+            .card-body
+              .card-text
+                - if answer.user
+                  = answer.user.username
+              .card-text
+                = answer.description

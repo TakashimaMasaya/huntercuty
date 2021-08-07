@@ -1,0 +1,26 @@
+.container
+  .row
+    = render 'shared/sidebar'
+    .col-md-10.col-12
+      .login-register-form
+        .login-register-form-inner
+          .card.mb-3
+            = form_with model: @user, class: 'card-body', local: true do |f|
+              = render 'shared/error_messages', object: @user
+              .form-group
+                = f.label :username, class: 'bmd-label-floating'
+                = f.text_field :username, class: 'form-control'
+              .form-group
+                = f.label :profile, class: 'bmd-label-floating'
+                = f.text_field :profile, class: 'form-control'
+              .form-group
+                = f.label :password, class: 'bmd-label-floating'
+                = f.password_field :password, class: 'form-control'
+              .form-group
+                = f.label :password_confirmation, class: 'bmd-label-floating'
+                = f.password_field :password_confirmation, class: 'form-control'
+              .form-group
+                = f.label :paid, class: 'bmd-label-floating'
+                = f.check_box :paid, class: 'form-control'
+
+              = f.submit '登録', class: 'btn btn-raised btn-primary'  

@@ -1,0 +1,12 @@
+.container
+  .row
+    = render 'shared/sidebar'
+    .col-md-10.col-12
+      .card.mb-5
+        .card-header
+          = @lesson.title
+          - @lesson.image.each do |image|
+            = image_tag image.url, width: '100%'
+        .card-body
+          .card-text
+            = @lesson.description

@@ -1,0 +1,13 @@
+.container
+  .row
+    = render 'shared/sidebar'
+    .col-md-10.col-12
+      - @lessons.each do |lesson|
+        .card.mb-5
+          .card-header
+            .d-flex.align-items-center
+              = link_to lesson_path(lesson) do
+                = lesson.title
+          .card-body
+            .card-text
+              = lesson.description
